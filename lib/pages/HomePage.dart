@@ -1,4 +1,3 @@
-
 import 'package:commerce/screen/BrowseScreen.dart';
 import 'package:commerce/screen/CartScreen.dart';
 import 'package:commerce/screen/HotScreen.dart';
