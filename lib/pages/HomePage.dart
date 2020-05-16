@@ -1,8 +1,10 @@
+import 'package:commerce/model/BrowseModel.dart';
+import 'package:commerce/pages/ProductPage.dart';
 import 'package:commerce/screen/BrowseScreen.dart';
-import 'package:commerce/screen/CartScreen.dart';
 import 'package:commerce/screen/HotScreen.dart';
 import 'package:commerce/screen/ProfileScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,13 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int index;
   int _selectedIndex = 0;
   static const TextStyle optionStyle = 
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
    List<Widget> _widgetOptions = <Widget> [
     BrowseScreen(),
     HotScreen(),
-    CartScreen(),
+    ProductPage(browses: browses.removeLast(),),
     ProfileScreen()
    
   ];
@@ -36,19 +39,19 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar( 
         items:  const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(FontAwesomeIcons.bars),
               title: Text('Browse')
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.ac_unit),
+              icon: Icon(FontAwesomeIcons.hotjar),
               title: Text('Hot')
               ),
                BottomNavigationBarItem(
-              icon: Icon(Icons.school),
+              icon: Icon(FontAwesomeIcons.shoppingCart),
               title: Text('Cart')
               ),
                BottomNavigationBarItem(
-              icon: Icon(Icons.business),
+              icon: Icon(FontAwesomeIcons.userCog),
               title: Text('Profile')
               ),
              

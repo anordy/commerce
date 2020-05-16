@@ -2,15 +2,27 @@ import 'package:commerce/model/BrowseModel.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class BrowseCard extends StatelessWidget {
+class ProductPage extends StatelessWidget {
   final Browse browses;
 
-  const BrowseCard({Key key,@required this.browses}) : super(key: key);
+  const ProductPage({Key key,@required this.browses}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(FontAwesomeIcons.angleLeft,size: 30,),
+        title: Center(
+          child: Text('Product  Details',style: TextStyle(color: Colors.white),)),
+        actions: <Widget>[
+          Image.asset('assets/icons/searchbutton.png')
+        ],
+      ),
+
+      body: SingleChildScrollView(
+        child: Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(               
+      child: Container(   
+                    height: 900,
                     decoration: BoxDecoration(
                      borderRadius: BorderRadius.circular(10),
                      boxShadow: [
@@ -75,14 +87,39 @@ class BrowseCard extends StatelessWidget {
                               ),
                               Text('  23 comments',style: TextStyle(color: Colors.grey)),
                             ],
+                          ),
+                          SizedBox(height: 20,),
+                          RaisedButton(
+                            color: Colors.redAccent,
+                            textColor: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 100,right: 100,top: 15,bottom: 15),
+                              child: Text('ADD TO CART'),
+                            ),
+                            onPressed: () {
+
+                          }),
+                          SizedBox(height: 10),
+                          Text('239 PEOPLE LIKE THIS',style: TextStyle(color: Colors.grey),),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Divider(thickness: 1,),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: AssetImage(browses.image),
+                              )
+                            ],
                           )
                         ],
                       ),
                 ),
+    )
+          ,
+      ),
     );
-            
-        
-      
-  
   }
+
 }
