@@ -6,6 +6,8 @@ class ProductPage extends StatelessWidget {
   final Browse browses;
 
   const ProductPage({Key key,@required this.browses}) : super(key: key);
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class ProductPage extends StatelessWidget {
         child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(   
-                    height: 900,
+                    height: 650,
                     decoration: BoxDecoration(
                      borderRadius: BorderRadius.circular(10),
                      boxShadow: [
@@ -89,16 +91,21 @@ class ProductPage extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 20,),
-                          RaisedButton(
-                            color: Colors.redAccent,
-                            textColor: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 100,right: 100,top: 15,bottom: 15),
-                              child: Text('ADD TO CART'),
-                            ),
-                            onPressed: () {
+                          InkWell(
+                            onTap: (){
 
-                          }),
+                            },
+                                                      child:  RaisedButton(
+                              color: Colors.redAccent,
+                              textColor: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 100,right: 100,top: 15,bottom: 15),
+                                child: Text('ADD TO CART'),
+                              ),
+                              onPressed: () {
+
+                            }),
+                          ),
                           SizedBox(height: 10),
                           Text('239 PEOPLE LIKE THIS',style: TextStyle(color: Colors.grey),),
                           Padding(
@@ -107,12 +114,77 @@ class ProductPage extends StatelessWidget {
                           ),
                           Row(
                             children: <Widget>[
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundImage: AssetImage(browses.image),
-                              )
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8,top: 5),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/img2.jpg'),
+                                ),
+                              ),
+                               Padding(
+                                padding: const EdgeInsets.only(left: 8,top: 5),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/img3.jpg'),
+                                ),
+                              ),
+                               Padding(
+                                padding: const EdgeInsets.only(left: 8,top: 5),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/img4.jpg'),
+                                ),
+                              ),
+                               Padding(
+                                padding: const EdgeInsets.only(left: 8,top: 5),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/img5.jpg'),
+                                ),
+                              ),
+                               Padding(
+                                padding: const EdgeInsets.only(left: 8,top: 5),
+                                child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AssetImage('assets/images/img6.jpg'),
+                                ),
+                              ),
                             ],
-                          )
+                          ),
+                          SizedBox(
+                            height: 20
+                          ),
+                            Text('AVERAGE REVIEW',style: TextStyle(color: Colors.grey)),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Divider(),
+                            ),
+                            Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset('assets/icons/starfilled.png',scale: 1.4),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset('assets/icons/starfilled.png',scale: 1.4),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset('assets/icons/starfilled.png',scale: 1.4),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset('assets/icons/starfilled.png',scale: 1.4),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset('assets/icons/starempty.png',scale: 1.4),
+                                )
+                              ],
+                            )
+
                         ],
                       ),
                 ),
