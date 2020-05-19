@@ -2,21 +2,42 @@ import 'package:commerce/model/BrowseModel.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ProductPage extends StatelessWidget {
+class ProductPage extends StatefulWidget {
   final Browse browses;
 
   const ProductPage({Key key,@required this.browses}) : super(key: key);
-  
 
+  @override
+  _ProductPageState createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  int index;
+
+  int _index = 0;
+  
+  void _checkedIndex(index) {
+    setState(() {
+      _index = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(FontAwesomeIcons.angleLeft,size: 30,),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(FontAwesomeIcons.angleLeft,size: 30,)),
         title: Center(
           child: Text('Product  Details',style: TextStyle(color: Colors.white),)),
         actions: <Widget>[
-          Image.asset('assets/icons/searchbutton.png')
+          InkWell(
+            onTap: () {
+              
+            },
+            child: Image.asset('assets/icons/searchbutton.png'))
         ],
       ),
 
@@ -52,7 +73,7 @@ class ProductPage extends StatelessWidget {
                           ),
                           Container(
                             height: 150,
-                            child: Image.asset(browses.image) ,
+                            child: Image.asset(widget.browses.image) ,
                           ),
                           Row(
                             children: <Widget>[
@@ -71,7 +92,7 @@ class ProductPage extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text(browses.type,style: TextStyle(color: Colors.black)),
+                                Text(widget.browses.type,style: TextStyle(color: Colors.black)),
                                 Text("Tshs 4M",style: TextStyle(color: Colors.white60),)
                               ],
                             ),
@@ -92,11 +113,21 @@ class ProductPage extends StatelessWidget {
                           ),
                           SizedBox(height: 20,),
                           InkWell(
-                            onTap: (){
-
+                            onDoubleTap: (){
+                                _checkedIndex(1);
                             },
-                                                      child:  RaisedButton(
+                                                      child: _index == 1 ? RaisedButton(
                               color: Colors.redAccent,
+                              textColor: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 100,right: 100,top: 15,bottom: 15),
+                                child: Text('ADD TO CART'),
+                              ),
+                              onPressed: () {
+
+                            })
+                            : RaisedButton(
+                              color: Colors.grey,
                               textColor: Colors.white,
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 100,right: 100,top: 15,bottom: 15),
@@ -193,5 +224,4 @@ class ProductPage extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -1,6 +1,6 @@
-import 'package:commerce/model/BrowseModel.dart';
-import 'package:commerce/pages/ProductPage.dart';
+
 import 'package:commerce/screen/BrowseScreen.dart';
+import 'package:commerce/screen/CartScreen.dart';
 import 'package:commerce/screen/HotScreen.dart';
 import 'package:commerce/screen/ProfileScreen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
    List<Widget> _widgetOptions = <Widget> [
     BrowseScreen(),
     HotScreen(),
-    ProductPage(browses: browses.removeLast(),),
+    CartScreen(),
     ProfileScreen()
    
   ];

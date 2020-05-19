@@ -23,14 +23,16 @@ class BrowseCard extends StatelessWidget {
                       color: Colors.white),
                       child: Column(
                         children: <Widget>[
-                          Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          Row(
+                            
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image(image: AssetImage('assets/icons/heartitem.png')),
+                                padding: const EdgeInsets.only(left: 8, top: 5),
+                                child: Image(image: AssetImage('assets/icons/heartitem.png'))
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.only(right: 8, top: 5),
                                 child: Image(image: AssetImage('assets/icons/favoriteditemenabled.png')),
                               ),
 
@@ -38,7 +40,7 @@ class BrowseCard extends StatelessWidget {
                           ),
                           Container(
                             height: 150,
-                            child: Image.asset(browses.image) ,
+                            child: Image.asset(browses.image,scale: 2,) ,
                           ),
                           Row(
                             children: <Widget>[
@@ -65,15 +67,22 @@ class BrowseCard extends StatelessWidget {
                           Row(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 10,bottom: 8),
                                 child: Image.asset('assets/icons/hearticon.png'),
                               ),
-                              Text('  23 Likes',style: TextStyle(color: Colors.grey)),
                               Padding(
-                                padding: const EdgeInsets.only(left: 60),
+                                padding: const EdgeInsets.only(bottom: 8),
+                                child: Text('  23 Likes',style: TextStyle(color: Colors.grey)),
+                              ),
+                            
+                              Padding(
+                                padding: const EdgeInsets.only(left: 60, bottom: 8),
                                 child: Icon(FontAwesomeIcons.comment),
                               ),
-                              Text('  23 comments',style: TextStyle(color: Colors.grey)),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8),
+                                child: Text('  23 comments',style: TextStyle(color: Colors.grey)),
+                              ),
                             ],
                           )
                         ],
