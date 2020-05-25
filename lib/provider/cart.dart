@@ -1,11 +1,11 @@
-import 'package:commerce/models/product.dart';
+import 'package:commerce/models/product_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Cart with ChangeNotifier, DiagnosticableTreeMixin {
   double _salesTaxRate = 0.04;
   double _shippingCostPerItem = 10;
-  List<Product> _availableProducts = [];
+  List<Browse> _availableProducts = [];
 
   //map of product id and quantity in the cart
   final Map<int, int> _productInCart = <int, int>{};
@@ -38,7 +38,7 @@ class Cart with ChangeNotifier, DiagnosticableTreeMixin {
   double get totalCost => subTotalCost + shippingCost + tax;
 
   //add products in the cart
-  void addProductToCart({@required Product currentProduct}) {
+  void addProductToCart({@required Browse currentProduct}) {
     if (!productInCart.containsKey(currentProduct.id)) {
       _productInCart[currentProduct.id] = 1;
     } else {
@@ -52,7 +52,7 @@ class Cart with ChangeNotifier, DiagnosticableTreeMixin {
   }
 
   // remove item to cart
-  void removeProductFromcart({@required Product currentProduct}) {
+  void removeProductFromcart({@required Browse currentProduct}) {
     if (productInCart.containsKey(currentProduct.id)) {
       if (_productInCart[currentProduct.id] == 1) {
         _productInCart.remove(currentProduct.id);

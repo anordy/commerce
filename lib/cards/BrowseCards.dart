@@ -1,11 +1,11 @@
-import 'package:commerce/model/BrowseModel.dart';
+import 'package:commerce/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BrowseCard extends StatelessWidget {
   final Browse browses;
 
-  const BrowseCard({Key key,@required this.browses}) : super(key: key);
+  const BrowseCard({Key key, this.browses,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return  Padding(

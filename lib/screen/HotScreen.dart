@@ -1,5 +1,5 @@
 import 'package:commerce/cards/BrowseCards.dart';
-import 'package:commerce/model/BrowseModel.dart';
+import 'package:commerce/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

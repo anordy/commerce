@@ -1,5 +1,6 @@
+
 import 'package:commerce/cards/BrowseCards.dart';
-import 'package:commerce/model/BrowseModel.dart';
+import 'package:commerce/models/product_model.dart';
 import 'package:commerce/pages/ProductPage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -55,7 +56,7 @@ class BrowseScreen extends StatelessWidget {
            MaterialPageRoute(builder: (context) => ProductPage( browses: browses[index],)),
   );
              },
-                 child: BrowseCard(browses: browses[index],));
+                 child: BrowseCard(browses: browses[index]));
                
              }),
            ),
