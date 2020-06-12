@@ -5,7 +5,16 @@ import 'package:flutter/material.dart';
 class Cart with ChangeNotifier, DiagnosticableTreeMixin {
   double _salesTaxRate = 0.04;
   double _shippingCostPerItem = 10;
-  List<Browse> _availableProducts = [];
+  
+  List<Product> _availableProducts = [];
+
+Cart(){
+  _availableProducts = List<Product>.from(products);
+}
+
+
+    List<Product> get availableProducts => _availableProducts;
+
 
   //map of product id and quantity in the cart
   final Map<int, int> _productInCart = <int, int>{};
@@ -37,8 +46,9 @@ class Cart with ChangeNotifier, DiagnosticableTreeMixin {
   ///total cost to order everything in cart
   double get totalCost => subTotalCost + shippingCost + tax;
 
+
   //add products in the cart
-  void addProductToCart({@required Browse currentProduct}) {
+  void addProductToCart({@required Product currentProduct}) {
     if (!productInCart.containsKey(currentProduct.id)) {
       _productInCart[currentProduct.id] = 1;
     } else {
@@ -52,7 +62,7 @@ class Cart with ChangeNotifier, DiagnosticableTreeMixin {
   }
 
   // remove item to cart
-  void removeProductFromcart({@required Browse currentProduct}) {
+  void removeProductFromcart({@required Product currentProduct}) {
     if (productInCart.containsKey(currentProduct.id)) {
       if (_productInCart[currentProduct.id] == 1) {
         _productInCart.remove(currentProduct.id);
@@ -62,7 +72,7 @@ class Cart with ChangeNotifier, DiagnosticableTreeMixin {
     }
     int index = _availableProducts
         .indexWhere((product) => product.id == currentProduct.id);
-    _availableProducts[index].quantity++;
+    // _availableProducts[index].quantity++;
 
     notifyListeners();
   }
@@ -76,5 +86,10 @@ class Cart with ChangeNotifier, DiagnosticableTreeMixin {
        });
        _productInCart.clear();
        notifyListeners();
+  }
+
+  Product getProductById(int id) {
+    return _availableProducts.firstWhere((Product product) => product.id == id);
+    
   }
 }

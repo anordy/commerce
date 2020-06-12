@@ -1,11 +1,13 @@
 import 'package:commerce/cards/BrowseCards.dart';
-import 'package:commerce/models/product_model.dart';
+import 'package:commerce/provider/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class HotScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
         leading: Icon(FontAwesomeIcons.bars),
@@ -44,9 +46,9 @@ class HotScreen extends StatelessWidget {
            child: Container(
              height: 500,
              child: ListView.builder(
-               itemCount: browses.length,
+               itemCount: cart.availableProducts.length,
                itemBuilder: (BuildContext context, int index) {
-               return BrowseCard(browses: browses[index],);
+               return BrowseCard(products: cart.availableProducts[index],);
                
              }),
            ),
